@@ -2,56 +2,84 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<title>지수장 서체</title>
+<title>SVG Typeface Tester</title>
 
 <style>
-
-@font-face {
-    font-family: "Jisoo";
-    src: url("./font.woff2") format("woff2");
+body {
+  margin: 0;
+  padding: 50px;
+  background: white;
+  color: black;
+  font-family: Arial, sans-serif;
 }
 
-body{
-    margin:0;
-    padding:60px;
-    font-family:sans-serif;
+h1 {
+  font-size: 24px;
+  font-weight: 400;
+  margin-bottom: 30px;
 }
 
-textarea{
-    width:100%;
-    height:150px;
-    font-size:24px;
+textarea {
+  width: 100%;
+  height: 120px;
+  font-size: 24px;
+  padding: 16px;
+  box-sizing: border-box;
+  border: 1px solid black;
+  outline: none;
+  resize: none;
 }
 
-#preview{
-    margin-top:40px;
-    font-family:"Jisoo";
-    font-size:80px;
-    line-height:1.2;
+#output {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: flex-end;
 }
 
+.letter {
+  height: 140px;
+  width: auto;
+  display: block;
+}
 </style>
-
 </head>
+
 <body>
 
-<h1>Typeface Tester</h1>
+<h1>SVG Typeface Tester</h1>
 
-<textarea id="input" placeholder="여기에 입력하세요"></textarea>
+<textarea id="input" placeholder="A B C 입력해 보기"></textarea>
 
-<div id="preview">
-안녕하세요
-</div>
+<div id="output"></div>
 
 <script>
-
 const input = document.getElementById("input");
-const preview = document.getElementById("preview");
+const output = document.getElementById("output");
 
-input.addEventListener("input",function(){
-    preview.textContent = input.value || "안녕하세요";
+input.addEventListener("input", () => {
+  output.innerHTML = "";
+
+  const text = input.value.toUpperCase();
+
+  for (const char of text) {
+    if (char === " ") {
+      const space = document.createElement("div");
+      space.style.width = "60px";
+      output.appendChild(space);
+      continue;
+    }
+
+    if (char >= "A" && char <= "Z") {
+      const img = document.createElement("img");
+      img.src = `letters/${char}.svg`;
+      img.className = "letter";
+      img.alt = char;
+      output.appendChild(img);
+    }
+  }
 });
-
 </script>
 
 </body>
