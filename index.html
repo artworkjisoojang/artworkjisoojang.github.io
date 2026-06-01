@@ -1,81 +1,132 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Jisoo Jang VL Prototype</title>
 
 <style>
-body {
-  margin: 0;
-  padding: 32px;
-  background: white;
-  color: black;
-  font-family: Arial, sans-serif;
-  overflow-x: hidden;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.intro {
-  width: 100%;
-  height: 260px;
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 48px;
+body{
+  background:white;
+  color:black;
+  font-family:Helvetica, Arial, sans-serif;
+  overflow-x:hidden;
+  padding:24px;
 }
 
-.word {
-  position: absolute;
-  font-size: 34px;
-  line-height: 1;
-  white-space: nowrap;
-  animation: drift 12s linear infinite;
+.intro{
+  width:100%;
+  height:420px;
+  position:relative;
+  overflow:hidden;
+  margin-bottom:30px;
 }
 
-.word:nth-child(1) { top: 0px; left: 0%; animation-delay: 0s; }
-.word:nth-child(2) { top: 42px; left: 14%; animation-delay: -2s; }
-.word:nth-child(3) { top: 84px; left: 28%; animation-delay: -4s; }
-.word:nth-child(4) { top: 126px; left: 7%; animation-delay: -6s; }
-.word:nth-child(5) { top: 168px; left: 22%; animation-delay: -8s; }
-.word:nth-child(6) { top: 210px; left: 4%; animation-delay: -10s; }
-
-@keyframes drift {
-  0% {
-    transform: translateX(100vw);
-  }
-  100% {
-    transform: translateX(-120vw);
-  }
+.word{
+  position:absolute;
+  font-size:92px;
+  font-weight:900;
+  letter-spacing:-0.12em;
+  line-height:0.85;
+  white-space:nowrap;
 }
 
-h1 {
-  font-size: 24px;
-  font-weight: 400;
-  margin: 0 0 30px 0;
+.word:nth-child(1){
+  top:0px;
+  animation:drift1 14s cubic-bezier(.83,0,.17,1) infinite;
 }
 
-textarea {
-  width: 100%;
-  height: 120px;
-  padding: 0;
-  border: none;
-  background: transparent;
-  outline: none;
-  resize: none;
-  font-size: 48px;
-  font-family: inherit;
+.word:nth-child(2){
+  top:70px;
+  animation:drift2 18s cubic-bezier(.83,0,.17,1) infinite;
 }
 
-#output {
-  margin-top: 50px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px;
-  align-items: flex-end;
+.word:nth-child(3){
+  top:140px;
+  animation:drift3 16s cubic-bezier(.83,0,.17,1) infinite;
 }
 
-.letter {
-  height: 140px;
-  width: auto;
-  display: block;
+.word:nth-child(4){
+  top:210px;
+  animation:drift4 20s cubic-bezier(.83,0,.17,1) infinite;
+}
+
+.word:nth-child(5){
+  top:280px;
+  animation:drift5 15s cubic-bezier(.83,0,.17,1) infinite;
+}
+
+.word:nth-child(6){
+  top:350px;
+  animation:drift6 19s cubic-bezier(.83,0,.17,1) infinite;
+}
+
+@keyframes drift1{
+  0%{transform:translateX(100vw);}
+  50%{transform:translateX(10vw);}
+  100%{transform:translateX(-120vw);}
+}
+
+@keyframes drift2{
+  0%{transform:translateX(120vw);}
+  50%{transform:translateX(0vw);}
+  100%{transform:translateX(-130vw);}
+}
+
+@keyframes drift3{
+  0%{transform:translateX(90vw);}
+  50%{transform:translateX(15vw);}
+  100%{transform:translateX(-110vw);}
+}
+
+@keyframes drift4{
+  0%{transform:translateX(130vw);}
+  50%{transform:translateX(5vw);}
+  100%{transform:translateX(-140vw);}
+}
+
+@keyframes drift5{
+  0%{transform:translateX(100vw);}
+  50%{transform:translateX(20vw);}
+  100%{transform:translateX(-120vw);}
+}
+
+@keyframes drift6{
+  0%{transform:translateX(140vw);}
+  50%{transform:translateX(0vw);}
+  100%{transform:translateX(-150vw);}
+}
+
+textarea{
+  width:100%;
+  height:120px;
+  border:none;
+  outline:none;
+  resize:none;
+  background:transparent;
+  font-size:48px;
+  font-family:inherit;
+}
+
+#output{
+  margin-top:60px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:0px;
+  align-items:flex-end;
+}
+
+.letter{
+  height:180px;
+  width:auto;
+  display:block;
 }
 </style>
 </head>
@@ -83,17 +134,15 @@ textarea {
 <body>
 
 <div class="intro">
-  <div class="word">Visual language is capable of disseminating knowledge</div>
-  <div class="word">more effectively than almost any other vehicle</div>
-  <div class="word">of communication.</div>
-  <div class="word">It can be learned and understood</div>
-  <div class="word">not only by educated people</div>
-  <div class="word">but also by those who are unable to read or write.</div>
+  <div class="word">VISUAL LANGUAGE IS CAPABLE OF DISSEMINATING KNOWLEDGE</div>
+  <div class="word">MORE EFFECTIVELY THAN ALMOST ANY OTHER VEHICLE</div>
+  <div class="word">OF COMMUNICATION</div>
+  <div class="word">IT CAN BE LEARNED AND UNDERSTOOD</div>
+  <div class="word">NOT ONLY BY EDUCATED PEOPLE</div>
+  <div class="word">BUT ALSO BY THOSE WHO ARE UNABLE TO READ OR WRITE</div>
 </div>
 
-<h1>Jisoo Jang VL Prototype</h1>
-
-<textarea id="input" placeholder="A B C 입력해 보기"></textarea>
+<textarea id="input" placeholder="TYPE HERE"></textarea>
 
 <div id="output"></div>
 
@@ -106,19 +155,18 @@ input.addEventListener("input", () => {
 
   const text = input.value.toUpperCase();
 
-  for (const char of text) {
-    if (char === " ") {
+  for(const char of text){
+    if(char === " "){
       const space = document.createElement("div");
-      space.style.width = "60px";
+      space.style.width = "50px";
       output.appendChild(space);
       continue;
     }
 
-    if (char >= "A" && char <= "Z") {
+    if(char >= "A" && char <= "Z"){
       const img = document.createElement("img");
       img.src = `letters/${char}.svg`;
       img.className = "letter";
-      img.alt = char;
       output.appendChild(img);
     }
   }
